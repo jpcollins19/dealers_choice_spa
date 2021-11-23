@@ -6,6 +6,8 @@ const {
   models: { League, Team, Player },
 } = require(`./db/postgres-info.js`);
 
+app.use(express.urlencoded({ extended: false }));
+
 app.use("/dist", express.static(path.join(__dirname, "dist")));
 app.use("/public", express.static(path.join(__dirname, "public")));
 app.get("/", (req, res, next) =>
@@ -41,6 +43,19 @@ app.get(`/leagues/teams/players`, async (req, res, next) => {
   try {
     const players = await Player.findAll();
     res.send(players);
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.post(`/leagues/:teamId/players`, async (req, res, next) => {
+  try {
+    res.status(201).send(
+      await Player.create({
+        name: req.body,
+        teamId: req.params.teamId,
+      })
+    );
   } catch (err) {
     next(err);
   }

@@ -124,6 +124,18 @@ body {
   text-align: center;
 }
 
+#player-name-box > h1 {
+  margin-bottom: 0.5rem;
+}
+
+.add-name-cont {
+  margin: 1rem;
+}
+
+input {
+  text-align: center;
+}
+
 .button-cont {
   display: flex;
   justify-content: center;

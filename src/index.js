@@ -67,9 +67,14 @@ const renderPlayers = () => {
     .map(
       (team) => `
         <h1>${team.name} Players</h1>
-          <div class="button-cont">
-            <button>Add A Player</button>
-          </div>
+          <form method='POST'>
+            <div class="add-name-cont">
+            <input name='name' placeholder='insert name'>
+            </div>
+            <div class="button-cont">
+              <button>Add A Player</button>
+            </div>
+          </form>
           <div class="player-info-cont">
             <div class="name-cont">
               <h2>Name</h2>

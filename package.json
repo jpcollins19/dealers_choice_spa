@@ -1,0 +1,33 @@
+{
+  "name": "dealers_choice_spa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "build:dev": "npm run build -- --watch --mode=development",
+    "start:dev": "npm run build:dev & nodemon server --ignore dist/ --ignore src/",
+    "joe": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpcollins19/dealers_choice_spa.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jpcollins19/dealers_choice_spa/issues"
+  },
+  "homepage": "https://github.com/jpcollins19/dealers_choice_spa#readme",
+  "devDependencies": {
+    "axios": "^0.24.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.15",
+    "pg": "^8.7.1",
+    "sequelize": "^6.12.0-alpha.1",
+    "webpack": "^5.64.2",
+    "webpack-cli": "^4.9.1"
+  }
+}

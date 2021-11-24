@@ -8,6 +8,8 @@ const {
 
 app.use(express.urlencoded({ extended: false }));
 
+app.use(express.json());
+
 app.use("/dist", express.static(path.join(__dirname, "dist")));
 app.use("/public", express.static(path.join(__dirname, "public")));
 app.get("/", (req, res, next) =>
@@ -48,14 +50,20 @@ app.get(`/leagues/teams/players`, async (req, res, next) => {
   }
 });
 
-app.post(`/leagues/:teamId/players`, async (req, res, next) => {
+app.post(`/:leagueId/:teamId/players`, async (req, res, next) => {
   try {
-    res.status(201).send(
-      await Player.create({
-        name: req.body,
-        teamId: req.params.teamId,
-      })
-    );
+    const player = { ...req.body };
+    res.status(201).send(await Player.create(player));
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.delete("/:leagueId/:teamId/:id", async (req, res, next) => {
+  try {
+    const player = await Player.findByPk(req.params.id);
+    await player.destroy();
+    res.sendStatus(204);
   } catch (err) {
     next(err);
   }

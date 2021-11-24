@@ -128,7 +128,7 @@ body {
   margin-bottom: 0.5rem;
 }
 
-.add-name-cont {
+.input-name-cont {
   margin: 1rem;
 }
 
@@ -144,4 +144,8 @@ input {
 
 .button-cont > button {
   height: 1.8rem;
+}
+
+.player-name-cont > div {
+  padding: 0.5rem;
 }
